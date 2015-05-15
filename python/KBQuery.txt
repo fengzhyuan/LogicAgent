@@ -1,0 +1,76 @@
+
+formulas(usable).
+B(3,0) <->P(2,0)|P(4,0)|P(3,1).
+S(3,0) <->W(2,0)|W(4,0)|W(3,1). 
+Loc(3,0,0)->(Breeze(0)<-> B(3,0)).
+Loc(3,0,0)->(Stench(0)<-> W(3,0)).
+Loc(3,0,0)->-P(3,0).
+Loc(3,0,0)->(-W(3,0)) | (W(3,0) & -WumpusAlive(0)).
+OK(0,0,1)<->-P(0,0)&-(W(0,0)&WumpusAlive(1)).
+OK(0,1,1)<->-P(0,1)&-(W(0,1)&WumpusAlive(1)).
+OK(0,2,1)<->-P(0,2)&-(W(0,2)&WumpusAlive(1)).
+OK(0,3,1)<->-P(0,3)&-(W(0,3)&WumpusAlive(1)).
+OK(0,4,1)<->-P(0,4)&-(W(0,4)&WumpusAlive(1)).
+OK(1,0,1)<->-P(1,0)&-(W(1,0)&WumpusAlive(1)).
+OK(1,1,1)<->-P(1,1)&-(W(1,1)&WumpusAlive(1)).
+OK(1,2,1)<->-P(1,2)&-(W(1,2)&WumpusAlive(1)).
+OK(1,3,1)<->-P(1,3)&-(W(1,3)&WumpusAlive(1)).
+OK(1,4,1)<->-P(1,4)&-(W(1,4)&WumpusAlive(1)).
+OK(2,0,1)<->-P(2,0)&-(W(2,0)&WumpusAlive(1)).
+OK(2,1,1)<->-P(2,1)&-(W(2,1)&WumpusAlive(1)).
+OK(2,2,1)<->-P(2,2)&-(W(2,2)&WumpusAlive(1)).
+OK(2,3,1)<->-P(2,3)&-(W(2,3)&WumpusAlive(1)).
+OK(2,4,1)<->-P(2,4)&-(W(2,4)&WumpusAlive(1)).
+OK(3,0,1)<->-P(3,0)&-(W(3,0)&WumpusAlive(1)).
+OK(3,1,1)<->-P(3,1)&-(W(3,1)&WumpusAlive(1)).
+OK(3,2,1)<->-P(3,2)&-(W(3,2)&WumpusAlive(1)).
+OK(3,3,1)<->-P(3,3)&-(W(3,3)&WumpusAlive(1)).
+OK(3,4,1)<->-P(3,4)&-(W(3,4)&WumpusAlive(1)).
+OK(4,0,1)<->-P(4,0)&-(W(4,0)&WumpusAlive(1)).
+OK(4,1,1)<->-P(4,1)&-(W(4,1)&WumpusAlive(1)).
+OK(4,2,1)<->-P(4,2)&-(W(4,2)&WumpusAlive(1)).
+OK(4,3,1)<->-P(4,3)&-(W(4,3)&WumpusAlive(1)).
+OK(4,4,1)<->-P(4,4)&-(W(4,4)&WumpusAlive(1)).
+G(3,0)&Loc(3,0,0)->Grab(0).
+end_of_list.
+
+formulas(usable).
+B(3,0) <->P(2,0)|P(4,0)|P(3,1).
+S(3,0) <->W(2,0)|W(4,0)|W(3,1). 
+Loc(3,0,1)->(Breeze(1)<-> B(3,0)).
+Loc(3,0,1)->(Stench(1)<-> W(3,0)).
+Loc(3,0,1)->-P(3,0).
+Loc(3,0,1)->(-W(3,0)) | (W(3,0) & -WumpusAlive(1)).
+G(3,0)&Loc(3,0,1)->Grab(1).
+end_of_list.
+
+
+formulas(assumptions).
+
+WumpusAlive(0).
+Shoot(0).
+HaveArrow(0).
+-S(3,0).
+-G(3,0).
+B(3,0).
+Loc(3,0,0).
+
+end_of_list.
+
+
+formulas(assumptions).
+
+WumpusAlive(1).
+-Shoot(1).
+-HaveArrow(1).
+-S(3,0).
+-G(3,0).
+B(3,0).
+Loc(3,0,1).
+
+end_of_list.
+
+formulas(goals).
+OK(2,2,1).
+end_of_list.
+

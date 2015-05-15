@@ -1,0 +1,56 @@
+
+%run with cmd:
+%./prover9 -f logic.txt
+
+set(production).
+
+
+
+formulas(usable).
+
+% Breeze
+B(x, y) <-> ((P(x + 1, y) & -Visited(x+1,y)) | (P(x-1,y) & -Visited(x-1,y)) | 
+					(P(x, y+1) & -Visited(x,y+1)) | (P(x,y-1) & -Visited(x,y-1)) % when not exceed bound
+S(x, y) <->  (W(x+1,y) & -Visited(x+1,y)) |
+			 (W(x-1,y) & -Visited(x-1,y)) |
+			 (W(x,y+1) & -Visited(x,y+1)) |
+			 (W(x,y-1) & -Visited(x,y-1)) 
+				 
+Loc(x, y, t) -> (Breeze(t) <-> B(x, y))
+Loc(x, y, t) -> (Stench(t) <-> W(x, y))
+
+% OK_(x,y)^(t)			 
+OK(x, y, t) <-> -P(x,y) & -(W(x, y) &WumpusAlive(t))
+
+%glitter(t)
+G(x, y) & Loc(x, y,t) -> Grab(t)
+
+% ASK(kb, L(x,y,t'))= false means return all squares that are not visited by agent
+% psesucode:
+for all squares in map:
+	if ASK(kb,L(x,y,t') == false && t'<= t
+		set += curLoc
+
+% have arrow(t)
+HaveArrow(t+1) <-> HaveArrow(t) & -Shoot(t)
+
+% scream
+Scream(t) -> -WumpusAlive(t + 1)
+-WumpusAlive(t) -> -WumpusAlive(t + 1)
+
+end_of_list.
+
+
+
+
+
+formulas(assumptions).
+
+end_of_list.
+
+
+
+
+formulas(goals).
+
+end_of_list.
